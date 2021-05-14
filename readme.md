@@ -1,3 +1,10 @@
+> 如果您无法正确查看图片，可能是因为图片被墙，请修改hosts文件（windows系统： C:\Windows\System32\drivers\etc）。
+> 
+> 使用 [域名IP互查](http://ip.webmasterhome.cn/?ip=raw.githubusercontent.com) ，查询raw.githubusercontent.com 所对应的IP地址，然后修改hosts文件，
+> 
+> 如：
+> 
+> 185.199.111.133 raw.githubusercontent.com
 
 
 # 1. 项目介绍
