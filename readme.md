@@ -17,7 +17,8 @@ web前端使用bootstrap可视化编程做的，jq写的比较烂。
 # 2. 项目演示
 
 1. 运行参数（笔者使用Clion远程开发）
-   ![img.png](readme-img/param.png)
+   <!-- ![img.png](readme-img/param.png) -->
+   ![img.png](https://github.com/sxuer/payhttp/blob/master/readme-img/param.png)
 
 
 2. index页面
