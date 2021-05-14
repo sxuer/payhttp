@@ -13,7 +13,7 @@
 
 epoll服务器部分参考《Linux系统编程》以及boost的axio的example（尤其是HTTP协议解析部分）。
 
-web后台是笔者按照已有的web后台开发经验所写，笔者比较熟悉Java后端开发，本想尝试使用反射机制实现一套MVC框架。
+web后台是笔者按照自己的Java Web开发经验整出来的简单实现。
 
 web前端使用bootstrap可视化编程做的，jq写的比较烂。
 
