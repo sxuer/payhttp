@@ -17,11 +17,11 @@ web前端使用bootstrap可视化编程做的，jq写的比较烂。
 # 2. 项目演示
 
 1. 运行参数（笔者使用Clion远程开发）
-   <!-- ![img.png](readme-img/param.png) -->
-   ![img.png](https://github.com/sxuer/payhttp/blob/master/readme-img/param.png)
 
+   ![img.png](readme-img/param.png)
 
 2. index页面
+
    ![img.png](readme-img/index.png)
 
 第一次使用，进行注册，注册完毕后会记录登录状态。
@@ -33,13 +33,16 @@ web前端使用bootstrap可视化编程做的，jq写的比较烂。
 我们可以先进行充值，然后查看钱包
 
 4. 充值
+
    ![img.png](readme-img/recharge.png)
 
 
 4. 我的钱包
+
    ![img.png](readme-img/wallet.png)
 
 5. 测试转账功能（需要先注册另外一个账号，保证存在转账对象）
+
    ![img.png](readme-img/transfer1.png)
 
 ![img.png](readme-img/transfer2.png)
