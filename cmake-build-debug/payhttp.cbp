@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="payhttp"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/b6/payhttp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/b6/payhttp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/b6/payhttp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="payhttp">
+				<Option output="/home/b6/payhttp/cmake-build-debug/payhttp" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/b6/payhttp/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/b6/payhttp/cmake-build-debug"/>
+					<Add directory="/home/b6/payhttp"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 payhttp"/>
+					<CompileFile command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="payhttp/fast">
+				<Option output="/home/b6/payhttp/cmake-build-debug/payhttp" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/b6/payhttp/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/b6/payhttp/cmake-build-debug"/>
+					<Add directory="/home/b6/payhttp"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 payhttp/fast"/>
+					<CompileFile command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j72 -f &quot;/home/b6/payhttp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/b6/payhttp/main.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/server/src/Constant.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/server/src/EpollConnection.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/server/src/EpollConnectionManager.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/server/src/EpollServer.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/server/src/Request.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/server/src/RequestHandler.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/server/src/RequestParser.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/server/src/Response.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/core/GlobalAutoIds.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/core/GlobalAutoIds.hpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/core/Json.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/core/Json.hpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/src/controller/BaseController.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/src/controller/BaseController.hpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/src/dao/BaseDao.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/src/dao/BaseDao.hpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/src/dao/TransactionDao.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/src/dao/TransactionDao.hpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/src/dao/UserDao.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/src/dao/UserDao.hpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/src/model/Transaction.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/src/model/Transaction.hpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/src/model/User.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/src/model/User.hpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/src/service/TransactionService.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/src/service/TransactionService.hpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/src/service/UserService.cpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/web/src/service/UserService.hpp">
+			<Option target="payhttp"/>
+		</Unit>
+		<Unit filename="/home/b6/payhttp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

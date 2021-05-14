@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+            integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <!--   header bar   -->
+            <ul class="nav nav-pills">
+                <li id="home-tab" class="active">
+                    <a href="#">首页</a>
+                </li>
+                <li id="wallet-tab">
+                    <a href="#">我的钱包</a>
+                </li>
+                <li id="tran-tab">
+                    <a href="#">交易大厅</a>
+                </li>
+                <li id="recharge-tab">
+                    <a id="modal-recharge" href="#modal-container-recharge" role="button" class="btn"
+                       data-toggle="modal">充值</a>
+                    <div class="modal fade" id="modal-container-recharge" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        充值
+                                    </h4>
+                                </div>
+                                <form id="recharge-from" class="modal-body" role="form" method="post"
+                                      enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label for="total">充值金额（元）</label><input type="text" class="form-control"
+                                                                                 id="total"
+                                                                                 name="total" value=""
+                                                                                 placeholder="最小金额为0.01"/>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button id="recharge-cancel" type="button" class="btn btn-default"
+                                                data-dismiss="modal">取消
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">提交</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+                <li class="pull-right">
+                    <a href="/index.html">退出登录</a>
+                </li>
+
+                <li class="pull-right disabled">
+                    <a href="#">余额：<span id="balance" class="balance_"></span> 元</a>
+                </li>
+                <li class="pull-right disabled">
+                    <a href="#">用户: <span class="name_"></span></a>
+                </li>
+            </ul>
+
+            <!--   welcome   -->
+            <div id="home-div" class="jumbotron active">
+                <h1>
+                    <span class="name_"></span> 欢 迎 体 验
+                </h1>
+                <p>
+                    这是一个简单的web系统，仅供学习使用。
+                </p>
+                <p>
+                    本系统支持登录、注册、转账、查询交易记录等操作。
+                </p>
+                <p>
+                    仅使用了标准库以及Linux提供的一些库函数（比如epoll），实现了:
+                </p>
+                <ul>
+                    <li>
+                        <p><strong>基于epoll的多线程服务器</strong></p>
+                    </li>
+                    <li>
+                        <p><strong>简单的Web后端三层架构</strong></p>
+                    </li>
+                    <li>
+                        <p><strong>前后端逻辑分离</strong></p>
+                    </li>
+                </ul>
+
+                <p>缺陷</p>
+                <ul>
+                    <li><p>暂无账号安全</p></li>
+                    <li><p>暂无线程池</p></li>
+                    <li><p>Web Controller的没有分离</p></li>
+                    <li><p>服务器程序与Web后端程序耦合</p></li>
+                </ul>
+                <p>参考环境</p>
+                <ul>
+                    <li><p>C++ 11</p></li>
+                    <li><p>Cmake 3.19</p></li>
+                    <li><p>Ubuntu 16.04.7 LTS (GNU/Linux 4.15.0-136-generic x86_64)</p></li>
+                </ul>
+                <p>
+                    <a class="btn btn-primary btn-large" target="_blank" href="https://blog.csdn.net/weixin_43367550">Learn
+                        more</a>
+                </p>
+            </div>
+
+            <!--  wallet   -->
+            <div id="wallet-div" class="jumbotron">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4>我的余额：<span class="balance_"></span> 元</h4>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            交易记录 <span style="font-weight:400;color:#999fa3">(暂无分页)</span>
+                        </h3>
+                    </div>
+                    <div id="transinfo" class="panel-body">
+                        <table id="transfer-table" class="table table-bordered table-hover table-condensed">
+                            <thead>
+                            <tr>
+                                <th>
+                                    交易单号
+                                </th>
+                                <th>
+                                    交易类型
+                                </th>
+                                <th>
+                                    交易时间
+                                </th>
+                                <th>
+                                    交易金额(元)
+                                </th>
+                                <th>
+                                    交易对象
+                                </th>
+                                <th>
+                                    备注
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="warning">
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    转出
+                                </td>
+                                <td>
+                                    20210511
+                                </td>
+                                <td>
+                                    50
+                                </td>
+                                <td>
+                                    张三
+                                </td>
+                                <td>
+                                    还钱
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- transaction -->
+            <div id="tran-div" class="jumbotron">
+
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4>我的余额：<span class="balance_"></span> 元</h4>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span>交易大厅</span> <span style="font-weight:400;color:#999fa3">(暂无分页)</span>
+                            <span><a id="modal-transfer" href="#modal-container-transfer" role="button"
+                                     class="btn pull-right "
+                                     data-toggle="modal" style="line-height:0">转账</a></span>
+                        </h3>
+                    </div>
+                    <div id="transferinfo" class="panel-body">
+                        <table id="otheruser" class="table table-hover">
+                            <thead>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+                <div class="modal fade" id="modal-container-transfer" role="dialog" aria-labelledby="transferLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                                </button>
+                                <h4 class="modal-title" id="transferLabel">
+                                    转账
+                                </h4>
+                            </div>
+                            <form id="transfer-form" class="modal-body" role="form" action="/transfer" method="post"
+                                  enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="relate">对方账号ID</label><input type="text" class="form-control"
+                                                                             id="relate"
+                                                                             name="relate" value=""
+                                                                             placeholder="请输入转出对象的账号ID"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="total-3">转账金额(元)</label><input type="text" class="form-control"
+                                                                               id="total-3"
+                                                                               name="total" value=""
+                                                                               placeholder="最小金额为0.01"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="remark">备注</label><input type="text" class="form-control"
+                                                                         id="remark"
+                                                                         name="remark" value=""
+                                                                         placeholder=""/>
+                                </div>
+                                <div class="modal-footer">
+                                    <button id="transfer-cancel" type="button" class="btn btn-default"
+                                            data-dismiss="modal">取消
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">提交</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="footer">
+        <div class="pull-right" style="font-weight:400;color:#888d90">© 2021 Devi Copyright</div>
+    </div>
+</div>
+
+</body>
+
+<script>
+
+    function getUser(id) {
+        let username;
+        $.ajax({
+            url: "/user?uid=" + id,
+            type: 'get',
+            async: false,
+            cache: false,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function (result) {
+                if (result) {
+                    username = result.username
+                }
+            }
+        });
+        console.log("====" + username)
+        return username;
+    }
+
+    $("#home-div").show();
+    $("#wallet-div").hide();
+    $("#tran-div").hide();
+
+    $("#home-tab").click(function () {
+        $("#home-tab").addClass("active");
+        $("#wallet-tab").removeClass("active");
+        $("#tran").removeClass("active");
+
+        $("#home-div").show();
+        $("#wallet-div").hide();
+        $("#tran-div").hide();
+    })
+
+    $("#wallet-tab").click(function () {
+        $("#wallet-tab").addClass("active");
+        $("#home-tab").removeClass("active");
+        $("#tran-tab").removeClass("active");
+
+        $("#wallet-div").show();
+        $("#home-div").hide();
+        $("#tran-div").hide();
+
+        $.ajax({
+            url: "/transaction",
+            type: 'get',
+            cache: false,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function (result) {
+                let data = result.data;
+                if (result) {
+                    if (result.code === 1001) {
+                        alert("登录失效")
+                        location.href = '/index.html'
+                    }
+                    if (data.length === 0) {
+                        $("#transinfo").html("<h4 style=\"font-weight:400;color:#999fa3\"> 暂无记录，您可以进行充值，或者前往交易大厅进行转账</h4>")
+                    } else {
+                        /* 填充之前需要先清空，否则将会直接将新内容追加到表格的后面了 */
+                        $("#transfer-table thead").empty("");
+                        $("#transfer-table tbody").empty("");
+
+                        // 表头
+                        $("#transfer-table thead").append('<tr>\n' +
+                            '                                <th>\n' +
+                            '                                    交易单号\n' +
+                            '                                </th>\n' +
+                            '                                <th>\n' +
+                            '                                    交易类型\n' +
+                            '                                </th>\n' +
+                            '                                <th>\n' +
+                            '                                    交易时间\n' +
+                            '                                </th>\n' +
+                            '                                <th>\n' +
+                            '                                    交易金额（元）\n' +
+                            '                                </th>\n' +
+                            '                                <th>\n' +
+                            '                                    交易对象\n' +
+                            '                                </th>\n' +
+                            '                                <th>\n' +
+                            '                                    备注\n' +
+                            '                                </th>\n' +
+                            '                            </tr>');
+
+                        console.log(data)
+                        for (i = 0; i < data.length; ++i) {
+                            let color = i % 2 === 0 ? 'info' : 'warning';
+                            let type = data[i].type == 0 ? "充值" : "转账";
+                            let relate = data[i].relate == -1 ? "系统" : getUser(data[i].relate);
+                            $("#transfer-table tbody").append("<tr class=\"" + color + "\">" +
+                                "<td>" +
+                                data[i].id +
+                                "</td>" +
+                                "<td>" +
+                                type +
+                                "</td>" +
+                                "<td>" +
+                                data[i].createTime +
+                                "</td>" +
+                                "<td>" +
+                                data[i].total / 100 +
+                                "</td>" +
+                                "<td>" +
+                                relate +
+                                "</td>" +
+                                "<td>" +
+                                data[i].remark +
+                                "</td>" +
+                                "</tr>"
+                            );
+                        }
+                    }
+                } else {
+                    alert("系统繁忙，请稍后重试")
+                }
+            }
+        });
+    })
+
+    $("#tran-tab").click(function () {
+        $("#tran-tab").addClass("active");
+        $("#home-tab").removeClass("active");
+        $("#wallet-tab").removeClass("active");
+
+        $("#tran-div").show();
+        $("#home-div").hide();
+        $("#wallet-div").hide();
+
+        otherUser();
+    })
+
+    // 获取用户信息
+    $.ajax({
+        url: "/user",
+        type: 'get',
+        cache: false,
+        // data: formData,
+        processData: false,
+        contentType: false,
+        dataType: "json",
+        success: function (result) {
+            if (result) {
+                $(".balance_").html(result.balance / 100);
+                $(".name_").html(result.username);
+            } else {
+                alert("登录失效")
+                location.href = '/index.html'
+            }
+        }
+    });
+
+    $("#recharge-from").submit(function () {
+        // 元转为分
+        let $total = $("#total");
+        let total = $total.val();
+        if (total <= 0) {
+            alert("充值金额有误");
+            // 阻止默认提交行为
+            return false;
+        }
+
+        $total.val(total *= 100);
+
+        $.ajax({
+            url: "/recharge",
+            data: $('#recharge-from').serialize(),
+            dataType: "json",
+            error: function (data) {
+                console.log(data.responseText)
+                alert("系统繁忙，请稍后重试（其实是系统错误，请查看console检查代码）");
+            },
+            success: function (data) {
+
+                // 关闭充值界面
+                $("#recharge-cancel").trigger("click");
+                // 这里应该局部刷新余额，偷懒的做法
+                $.ajax({
+                    url: "/user",
+                    type: 'get',
+                    cache: false,
+                    // data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType: "json",
+                    success: function (result) {
+                        if (result) {
+                            $(".balance_").html(result.balance / 100);
+                            $(".name_").html(result.username);
+                        } else {
+                            alert("登录失效")
+                            location.href = '/index.html'
+                        }
+                    }
+                });
+
+                alert("充值成功！")
+
+            }
+        });
+        $("#total").val("");
+        // 阻止默认提交行为
+        return false;
+    })
+
+    $("#transfer-form").submit(function () {
+        // 元转为分
+        let $total = $("#total-3");
+        let total = $total.val();
+        if (total <= 0) {
+            alert("转账金额有误");
+            // 阻止默认提交行为
+            return false;
+        }
+        if (total > parseFloat($("#balance").text())) {
+            alert("余额不足，您只有" + $("#balance").text() + "元");
+            // 阻止默认提交行为
+            return false;
+        }
+
+        $total.val(total *= 100);
+
+        transfer();
+        otherUser();
+        $("#total-3").val("");
+        // 更新金额
+        // 阻止默认提交行为
+        return false;
+    })
+
+    function otherUser() {
+        $.ajax({
+            url: "/otheruser",
+            type: 'get',
+            cache: false,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function (result) {
+                let data = result.data;
+                if (result) {
+                    if (result.code === 1001) {
+                        alert("登录失效")
+                        location.href = '/index.html'
+                    }
+                    if (data.length === 0) {
+                        $("#transferinfo").html("<h4 style=\"font-weight:400;color:#999fa3\"> 暂无其他用户，您可以注册多个用户进行测试 </h4>")
+                    } else {
+                        /* 填充之前需要先清空，否则将会直接将新内容追加到表格的后面了 */
+                        $("#otheruser thead").empty("");
+                        $("#otheruser tbody").empty("");
+
+                        // 表头
+                        $("#otheruser thead").append('<tr>\n' +
+                            '                                <th>\n' +
+                            '                                    用户ID\n' +
+                            '                                </th>\n' +
+                            '                                <th>\n' +
+                            '                                    用户名\n' +
+                            '                                </th>\n' +
+                            '                                <th>\n' +
+                            '                                    余额（元）<span style="font-weight:400;color:#999fa3"> 为方便观察而显示的隐私数据</span>\n' +
+                            '                                </th>\n' +
+                            '                            </tr>');
+
+                        for (i = 0; i < data.length; ++i) {
+                            let color = i % 2 === 0 ? 'info' : 'warning';
+                            $("#otheruser tbody").append("<tr class=\"" + color + "\">" +
+                                "<td>" +
+                                data[i].uid +
+                                "</td>" +
+                                "<td>" +
+                                data[i].username +
+                                "</td>" +
+                                "<td>" +
+                                data[i].balance / 100 +
+                                "</td>" +
+                                "</tr>"
+                            );
+                        }
+                    }
+                } else {
+                    alert("系统繁忙，请稍后重试")
+                }
+            }
+        });
+    }
+
+    function transfer() {
+        $.ajax({
+            url: "/transfer",
+            data: $('#transfer-form').serialize(),
+            dataType: "json",
+            error: function (data) {
+                console.log(data.responseText)
+                alert("系统繁忙，请稍后重试（其实是系统错误，请查看console检查代码）");
+            },
+            success: function (data) {
+
+                // 关闭转账界面
+                $("#transfer-cancel").trigger("click");
+                // 这里应该局部刷新余额，偷懒的做法
+                $.ajax({
+                    url: "/user",
+                    type: 'get',
+                    cache: false,
+                    // data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType: "json",
+                    success: function (result) {
+                        if (result) {
+                            $(".balance_").html(result.balance / 100);
+                            $(".name_").html(result.username);
+                        } else {
+                            alert("登录失效")
+                            location.href = '/index.html'
+                        }
+                    }
+                });
+
+                alert("转账成功！")
+            }
+        });
+    }
+</script>
+
+</html>
